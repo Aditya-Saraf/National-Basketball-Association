@@ -63,18 +63,9 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 
 > Analysis of the relationship between height and weight of players, and their impact on the player position has been performed. We have used the K-means clustering method over weight and height. The positions of players are C, F and G.
 
-| Zip Code | City |
-|------|------|
-| 28208  | Charlotte |
-| 28212  | Charlotte |
-| 28206  | Charlotte |
-| 28207  | Charlotte |
-
-## Results and Discussion
-- Dataset has many missing values and outliers.
-- The Coaches dataset is not suitable for clustering. If data is to be clustered then 2 clusters can be used which are derived from the elbow and Silhouette score.
-- We achieved only 47.47% overall accuracy using the Decision tree approach for classifying the player category. Weak players were generally more misclassified as average.
-- All-star league prediction:
+## Results 
+> We achieved only 47.47% overall accuracy using the Decision tree approach for classifying the player category. Weak players were generally more misclassified as average.
+> All-star league prediction:
 
 | Models | Accuracy | Recall | Precision | F1 Measure |
 |------|------|------|------|------|
@@ -82,3 +73,41 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 | Decision Tree  | 91.65% | 64% | 68.08% | 65.97% |
 | KNN  | 92.15% | 54% | 77.14% | 63.53% |
 | SGD  | 92.78% | 87%  | 66.41% | 75.32% |
+
+> The following graphs show the accuracies for attributes that were predicted using all other attributes with at least 90% thrice repeated 3-fold cross validation accuracy.Note: Attributes with suffixes po and rg represent performance in playoffs and regular season respectively. Attributes without suffix denote performance in all star games.
+
+- Random Forest Classifier (a:Average per game. b:Cumulative data)
+- XGBoost random forest classifier (a:Average per game. b:Cumulative data)
+
+> The following graphs show the accuracies for attributes averaged across the number of games played that were predicted using only BMI and position with at least 80% thrice repeated 3-fold cross validation accuracy. 
+
+- Random Forest Classifier
+- XGBoost random forest classifier 
+
+> The results of analysis of career span of players showed that the mean, median and standard deviation of careerspan for players of position-C were - 5.38, 4.0, 5.02 respectively. Similarly, results for position-F and position-G were found to be - 4.15, 3.0, 4.34 and 4.03, 2.0, 4.22 respectively.
+
+> The results of analysis showed that ’height’ and ’weight’ are highly correlated with correlation = 0.82 (Figure 13 (b)), which was intuitively correct since a player with more height tends to have more mass resulting in more weight. The further and main part of this analysis was 3-means clustering (k=3, since categories = C,F,G) over the weight and height. It was found that the height of players significantly impacts the position of their gameplay.
+
+## Discussion and Conclusion
+- Dataset has many missing values and outliers.
+- The Coaches dataset is not suitable for clustering. If data is to be clustered then 2 clusters can be used which are derived from the elbow and Silhouette score.
+- By using nominal attributes, we cannot predict the class category of a player effectively. Thus, in this data there cannot be any clear relationship identified between the player’s biological/ demographic data and the player’s performance.
+- We can perform reliable classification using discretised performance attributes. Predictions on cumulative data tend to perform better than predictions on average values per game. Given a BMI class and position, classes for some average values per game may be obtained. Additionally, this approach may be extended to predict cumulative performance attributes, considering the number of games played as an input parameter along with BMI class and position.
+- It can be clearly observed (using median) that players who used to play on position-C had a longer career span followed by players who played at position-F. At last, players who played at position-G had the smallest career span. Hence from the above analysis, we can say that the career span of players according to their positions is — C > F > G.
+- Neither silhouette nor elbow method can clearly determine the optimal cluster in the coaches data. Thus the data cannot be clustered properly.
+- The results of analysis of height and weight w.r.t the position of the player showed that ’height’ and ’weight’ are highly correlated with correlation = 0.82, which was intuitively correct since a player with more height tends to have more mass resulting in more weight. The further and main part of this analysis was 3-means clustering (k=3, since categories = C,F,G) over the weight and height. It was found that the height of players significantly impacts the position of their gameplay.
+- The results clearly comprehend that the players with more height tend to play at position-C, followed by position-F and the shortest players play at position-G. Also, Tall players have a longer career span.
+
+## References
+- M. S. Oughali, M. Bahloul and S. A. El Rahman, "Analysis of NBA Players and Shot Prediction Using Random Forest and XGBoost Models," 2019 International Conference on Computer and Information Sciences (ICCIS), 2019, pp. 1-5, doi: 10.1109/ICCISci. 2019.8716412.
+
+- A. Reed, J. Piorkowski and I. McCulloh, "Correlating NBA Team Network Centrality Measures with Game Performance," 2018 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM), 2018, pp. 1291-1294, doi: 10.1109/ASONAM.2018.8508571.
+
+- J. Hewko, R. Sullivan, S. Reige and M. El-Hajj, "Data Mining in The NBA: An Applied Approach," 2019 IEEE 10th Annual Ubiquitous Computing, Electronics & Mobile Communication Conference (UEMCON), 2019, pp. 0426-0432, doi: 10.1109/UEMCON47517.2019.8993074.
+
+- How to Determine the Optimal K for K-Means? | by Khyati Mahendru | Analytics Vidhya
+
+- Evaluating goodness of clustering for unsupervised learning case
+
+- Using K-Means Clustering Algorithm to Redefine NBA Positions and Explore Roster Construction
+
