@@ -8,7 +8,7 @@ The National Basketball Association (NBA) is a professional basketball league in
 This project has been started with my no previous knowledge in the game of Basketball thus most of the Data mining techniques used, yielded no pattern.
 
 ### Data
-Dataset has been taken from <a href="http://www.cs.cmu.edu/~awm/10701/project/databasebasketball2.0.zip" target="_blank">here.</a>
+Dataset has been taken from http://www.cs.cmu.edu/~awm/10701/project/databasebasketball2.0.zip
 
 
 ## Basic Pipeline
