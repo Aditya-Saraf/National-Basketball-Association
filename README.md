@@ -7,13 +7,46 @@ The National Basketball Association (NBA) is a professional basketball league in
 ### The Challenge: Data
 This project has been started with my no previous knowledge in the game of Basketball thus most of the Data mining techniques used, yielded no pattern.
 
-### Data
+## Data
 Dataset has been taken from http://www.cs.cmu.edu/~awm/10701/project/databasebasketball2.0.zip
 
+### Data Preparation
+- Cleaning: A variety of techniques have been used to improve the representativeness of the data. The approaches applied are determined by the proportion of data missing against the sample, the type of missing values, and context-aware selection of other correlated variables.
+- Draft Dataset: Attribute ilkid had 60% missing percentage. Used listwise deletion for nominal attributes.
+- Players Regular Season dataset: Attribute turnover had a 1.5% missing percentage. Since it’s a continuous attribute, replacement done with mean and median of all available values, but a better estimation was obtained using a linear regression utilizing other performance attributes.
+- Players dataset: Attributes hfeet, hinches, and weight had 0.25%, 0.25% and 0.5% respectively. These attributes are replaced with the mean and median of all available values since they are continuous. Linear regression was also considered for estimating hfeet against weight and vice versa, however, there are no records where only one from the two is missing. Attributes college and birthdates had 1.5% and 0.5% missing rates.
+- Additionally, certain important attributes such as age, retirement age, career spans and debut age which were derived from the given attributes are also added to the original data.
 
 ## Basic Pipeline
 - Data Visualizaton: K means clustering, silhouette method, elbow method and distortion.
-- Data preprocessing: Estimation of null values using mean, mediuns and linear
-regressions. 
-- Data mining models: KNN, Random Forests, Logistic Regression.
+- Data preprocessing: Estimation of null values using Mean, Medians and Linear Regressions. 
+- Data mining techniques: Clustering (K-means, elbow method, Silhouette method), Binary Classification (Decision trees, Logistic Regression, KNN, SGD), Ensemble techniques (Random Forest), XGBoost.
 
+
+## Data Visualizaton and Pattern recognition
+For visualizing the raw data and understanding the hidden groups, K-means clustering has been applied for different values of K. Two extra columns for each coach has been made:
+1. Win percentage in regular seasons
+2. Win percentage in playoff seasons
+These two derived attributes were plotted to understand groups of coaches who perform well in seasons or in playoffs or in both. After applying clustering for different values, it was noticed that there are no such distinguishable groups present in the coach data.
+
+### Finding optimal K
+- The elbow method in clustering is a heuristic used to determine the number of clusters in a data set.The elbow method here is not clearly indicating the optimal k value. Thus it can be said that, the data is not very clustered intrinsically.
+- The silhouette score has been utilized to show how many clusters are ideal. Silhouette score explains the density of each cluster and the separation from cluster to cluster. Once the rate slows down significantly picking a higher number of ‘n’ clusters isn’t very useful[7]. It was found that 2 clusters are sufficient.
+
+### Attribute Redundancy & Usefulness
+Generally, we look for the uniqueness of nominal attributes, in order to decide whether the attribute will be useful or not in decision making. In the player data, it was found that, college attribute has 20% of uniqueness. So, it might not be a good factor in order to make any decisions about the success of a player. But, location (background information) and birthdates can be very good decision maker attributes as they have 60% and 80% of uniqueness respectively.
+
+### Feature Selection
+Covariance matrix is used in order to determine the features which contribute the most in the data. Principal Component Analysis (PCA) is used on player’s data (in
+standardized data), which determined that 6 PCs, that covers approximately 93.28% of the total variance are sufficient and hence can significantly reduce the data size.
+
+## Inference
+> K - means clustering: To understand how a team’s coach affects the game plan, we have calculated the season success rate and the playoff success rate. The success rate was calculated as the number of wins upon the total number of games played by a team under a coach. We clustered this data to find a relationship between playoff success and season success under a coach. The Elbow method and the silhouette method used to find the optimal K suggested that K=2 is good for clustering. From the graphs generated we can conclude that our coaches’ data is not suited for clustering.
+
+> Predictions on performance attributes of a player would be reliably performed on discretised data, reducing the precision required and enabling the use of classification techniques. Classification on performance attributes taken as an average across the total number of games played would perform better than classification on cumulative data. Readily available attributes such as position, weight and height can be used to predict performance attributes in the absence of game data. We introduced additional attributes for each performance attribute with values as the value of the respective original attribute divided by the number of games played. Attribute BMI was introduced as a ratio of weight and squared height. We used the silhouette method to determine the optimal number of bins for each attribute, followed by K-means clustering to obtain a label for each value and discretise all attributes. Then, we applied the random forest classifier and the Extreme Gradient Boosted (XGBoost) random forest classifier for each original attribute, using input as all other original attributes. The same was repeated for attributes averaged across games instead of original attributes. Finally, classification was performed using readily available attributes such as position and BMI.
+
+> Decision Tree Algorithm for performance classification: Demographic background and biological history may affect the performance of a player. We tried to predict the player’s performance using his nominal attributes such as height, weight, age, college, state using Decision Tree. Decision Tree is generally really good for this kind of classification problem. We randomly split the dataset into a training and testing set using a 70-30 margin. After tuning the parameters of a decision tree model, we had 750 max leaf nodes as the upper bound of the complexity of a model. We carried out class wise accuracy using that model as the data was unevenly distributed among the class categories. However, we observed that by using those attributes we cannot accurately predict the class of a player
+
+## Results and Discussion
+- Dataset has many missing values and outliers.
+- The Coaches dataset is not suitable for clustering. If data is to be clustered then 2 clusters can be used which are derived from the elbow and Silhouette score.
