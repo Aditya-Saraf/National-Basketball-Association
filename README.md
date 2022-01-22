@@ -53,11 +53,11 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 
 - Decision Tree: DT is a very suitable approach for simple classification problems. We tuned the algorithm for achieving an optimal complexity and achieved 91.64% overall accuracy and 64% Recall on class 1. The complexity of our model is 97 leaf nodes. We again tried to find the important factors which plays an important role for the decisions. Those features are: Free Throw made, Points earned both in regular season, age, steals in playoffs, career span and game played
 
->> K nearest neighbour: We tuned the K value for the best KNN model. We found that the model got overfitted for low values of K but, for K = 9, it gave the minimum error with 7.85% misclassification error. We got to achieve 54% recall value for class 1.
+- K nearest neighbour: We tuned the K value for the best KNN model. We found that the model got overfitted for low values of K but, for K = 9, it gave the minimum error with 7.85% misclassification error. We got to achieve 54% recall value for class 1.
 
->> SGD: Since our data is linearly separable, we tried to implement stochastic gradient descent which is expected to work really well in this kind of problem. SGD was set into 90 max iteration and was able to achieve 87% recall value on class 1 which is really good. It gave 92.78% overall accuracy on unseen dataset.
+- SGD: Since our data is linearly separable, we tried to implement stochastic gradient descent which is expected to work really well in this kind of problem. SGD was set into 90 max iteration and was able to achieve 87% recall value on class 1 which is really good. It gave 92.78% overall accuracy on unseen dataset.
 
->> Model Comparison:Based on the 4 scores, all the models were evaluated. We were highly focused on the F1 Score in order to decide the better model as we cared about how precisely the model can identify class 1 and how many of them can be identified well. Logistic regression performs extremely well with all the competing models, having the highest F1 score of 75.39%, having 79.12% precision value and 94.05% overall accuracy
+- Model Comparison:Based on the 4 scores, all the models were evaluated. We were highly focused on the F1 Score in order to decide the better model as we cared about how precisely the model can identify class 1 and how many of them can be identified well. Logistic regression performs extremely well with all the competing models, having the highest F1 score of 75.39%, having 79.12% precision value and 94.05% overall accuracy
 
 > Analysis of the career span of players on the basis of the positions has been performed. The three main positions taken into consideration are - C(Center), F(Forward) and G(Guard). The impact of these three affecting variables was observed on the variable ’careerspan’ which is calculated as the time difference of two given variables - ’firstseason’ and ’lastseason’. For analysis, the player data was divided into 3 sections according to their positions and descriptive analysis on each of the sections were done separately.
 
@@ -66,3 +66,12 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 ## Results and Discussion
 - Dataset has many missing values and outliers.
 - The Coaches dataset is not suitable for clustering. If data is to be clustered then 2 clusters can be used which are derived from the elbow and Silhouette score.
+- We achieved only 47.47% overall accuracy using the Decision tree approach for classifying the player category. Weak players were generally more misclassified as average.
+- All-star league prediction:
+
+| Models | Accuracy | Recall | Precision | F1 Measure |
+|------|------||------|------||------|
+| Linear Regression  | 94.05% | 72% | 79.12% | 73.39% |
+| Decision Tree  | 91.65% | 64% | 68.08% | 65.97% |
+| KNN  | 92.15% | 54% | 77.14% | 63.53% |
+| SGD  | 92.78% | 87%  | 66.41% | 75.32% |
