@@ -63,6 +63,13 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 
 > Analysis of the relationship between height and weight of players, and their impact on the player position has been performed. We have used the K-means clustering method over weight and height. The positions of players are C, F and G.
 
+| Zip Code | City |
+|------|------|
+| 28208  | Charlotte |
+| 28212  | Charlotte |
+| 28206  | Charlotte |
+| 28207  | Charlotte |
+
 ## Results and Discussion
 - Dataset has many missing values and outliers.
 - The Coaches dataset is not suitable for clustering. If data is to be clustered then 2 clusters can be used which are derived from the elbow and Silhouette score.
@@ -70,7 +77,7 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 - All-star league prediction:
 
 | Models | Accuracy | Recall | Precision | F1 Measure |
-|------|------||------|------||------|
+|------|------|------|------|------|
 | Linear Regression  | 94.05% | 72% | 79.12% | 73.39% |
 | Decision Tree  | 91.65% | 64% | 68.08% | 65.97% |
 | KNN  | 92.15% | 54% | 77.14% | 63.53% |
