@@ -110,9 +110,16 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 > Random Forest Classifier
 > XGBoost random forest classifier 
 
-- The results of analysis of career span of players showed that the mean, median and standard deviation of careerspan for players of position-C were - 5.38, 4.0, 5.02 respectively. Similarly, results for position-F and position-G were found to be - 4.15, 3.0, 4.34 and 4.03, 2.0, 4.22 respectively.
+- The results of analysis of career span of players showed that the mean, median and standard deviation of careerspan for players of position-C were - 5.38, 4.0, 5.02 respectively. Similarly, results for position-F and position-G were found to be - 4.15, 3.0, 4.34 and 4.03, 2.0, 4.22 respectively. (Figure 7)
 
-- The results of analysis showed that ’height’ and ’weight’ are highly correlated with correlation = 0.82 (Figure 13 (b)), which was intuitively correct since a player with more height tends to have more mass resulting in more weight. The further and main part of this analysis was 3-means clustering (k=3, since categories = C,F,G) over the weight and height. It was found that the height of players significantly impacts the position of their gameplay.
+
+**(Figure 7 and 8)**
+![](images/f78.png)
+
+- The results of analysis showed that ’height’ and ’weight’ are highly correlated with correlation = 0.82, which was intuitively correct since a player with more height tends to have more mass resulting in more weight. The further and main part of this analysis was 3-means clustering (k=3, since categories = C,F,G) over the weight and height. It was found that the height of players significantly impacts the position of their gameplay. (Figure 9)
+
+**(Figure 9)**
+![](images/f9.png)
 
 ## Discussion and Conclusion
 - Dataset has many missing values and outliers.
@@ -122,7 +129,7 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 - It can be clearly observed (using median) that players who used to play on position-C had a longer career span followed by players who played at position-F. At last, players who played at position-G had the smallest career span. Hence from the above analysis, we can say that the career span of players according to their positions is — C > F > G.
 - Neither silhouette nor elbow method can clearly determine the optimal cluster in the coaches data. Thus the data cannot be clustered properly.
 - The results of analysis of height and weight w.r.t the position of the player showed that ’height’ and ’weight’ are highly correlated with correlation = 0.82, which was intuitively correct since a player with more height tends to have more mass resulting in more weight. The further and main part of this analysis was 3-means clustering (k=3, since categories = C,F,G) over the weight and height. It was found that the height of players significantly impacts the position of their gameplay.
-- The results clearly comprehend that the players with more height tend to play at position-C, followed by position-F and the shortest players play at position-G. Also, Tall players have a longer career span.
+- The results clearly comprehend that the players with more height tend to play at position-C, followed by position-F and the shortest players play at position-G. Also, Tall players have a longer career span.(Figure 8)
 
 ## References
 - M. S. Oughali, M. Bahloul and S. A. El Rahman, "Analysis of NBA Players and Shot Prediction Using Random Forest and XGBoost Models," 2019 International Conference on Computer and Information Sciences (ICCIS), 2019, pp. 1-5, doi: 10.1109/ICCISci. 2019.8716412. https://ieeexplore.ieee.org/document/8716412
