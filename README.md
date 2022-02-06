@@ -51,6 +51,11 @@ standardized data), which determined that 6 PCs, that covers approximately 93.28
 
 > Logistic Regression: We finetuned the model using over the number of iteration as parameter and then took the best number of iterations which gave the highest recall. Here, the number of all star players is very less than the number of non star players. Using a stratified sampling approach, we mainly focused on how well the predictor predicts the Class ‘1’ rather than the class ‘0’. We used Jacardian distance to measure that. (Figure 1) This model was able to achieve 94.05% overall accuracy on the unseen data and 72.00% recall. The model laid out some important attributes for predicting the output which were: Game played, rebounds, career span, regular season points and assists in the playoffs.
 
+<br />
+
+![locations_with_clusters](images/f1.png)
+
+
 > Decision Tree: DT is a very suitable approach for simple classification problems. We tuned the algorithm for achieving an optimal complexity and achieved 91.64% overall accuracy and 64% Recall on class 1. The complexity of our model is 97 leaf nodes. We again tried to find the important factors which plays an important role for the decisions. Those features are: Free Throw made, Points earned both in regular season, age, steals in playoffs, career span and game played
 
 > K nearest neighbour: We tuned the K value for the best KNN model. We found that the model got overfitted for low values of K but, for K = 9, it gave the minimum error with 7.85% misclassification error. We got to achieve 54% recall value for class 1.
